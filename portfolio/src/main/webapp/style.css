@@ -8,6 +8,10 @@
   margin-top: 20px;
 }
 
+#selfie {
+    height: 300px;
+    width: 300px; 
+}
 body {
     background-color: lightblue;
 }
