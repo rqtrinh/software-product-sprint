@@ -11,13 +11,6 @@
       <h1>Ryan Trinh</h1>
       <img src ="/images/selfie.jpg" id="selfie"/>
 
-      <form action="/form-handler" method="POST">
-        <p>Enter some text here:</p>
-        <textarea name="text-input">hello world</textarea>
-        <br/>
-        <input type="submit" />
-      </form>
-
       <h2>Biography</h2>
       <p>My name is Ryan Trinh. I am a third year Computer Science major
           at Cal Poly Pomona. My goal is to become a full stack developer 
@@ -119,6 +112,26 @@
       <p>Click here to get a random fact:</p>
       <button onclick="addRandomGreeting()">Facts</button>
       <div id="greeting-container"></div>
+
+      <h2>Contact Me!</h2>
+      <form action="/form-handler" method="POST">
+
+        <input type="text" name="name-input" placeholder="Your Name"/>
+        <br/><br/>
+
+        <select name="contact-method">
+            <option value="email">Email</option>
+            <option value="phone-number">Number</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="instagram">Instagram</option>
+        </select>
+        <br/><br/>
+
+        <input type="text" name="contact-information" placeholder="Contact Information"/>
+        <br/><br/>
+
+        <input type="submit" />
+      </form>
     </div>
   </body>
 </html>
