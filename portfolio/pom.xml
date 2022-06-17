@@ -20,11 +20,19 @@
   </properties>
 
   <dependencies>
+    <!-- Datastore -->
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-datastore</artifactId>
+      <version>1.104.0</version>
+    </dependency>
+    <!-- GSON -->
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
       <version>2.9.0</version>
     </dependency>
+
     <!-- Java Servlets API -->
     <dependency>
       <groupId>javax.servlet</groupId>
