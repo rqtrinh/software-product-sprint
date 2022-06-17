@@ -22,9 +22,11 @@ public class FormHandlerServlet extends HttpServlet {
     System.out.println("Contact Method: " + contactMethod);
     System.out.println("Contact Information: " + contactInformation);
 
+    //Format string for getWriter 
+    String submit = String.format("You submitted: %s, %s, %s", name, contactMethod, contactInformation);
+
     // Write the value to the response so the user can see it.
-    response.getWriter().println("You submitted: " + name + ", " + 
-                                contactMethod + ", " + contactInformation);
+    response.getWriter().println(submit);
     // Redirect user back to main page
     response.sendRedirect("https://rtrinh-sps-summer22.appspot.com/");
   }
