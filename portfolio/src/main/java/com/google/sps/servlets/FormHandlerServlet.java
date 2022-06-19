@@ -12,11 +12,16 @@ import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
+
+import org.jsoup.Jsoup;
+
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.KeyFactory;
+import org.jsoup.safety.Safelist;
+
 
 @WebServlet("/form-handler")
 public class FormHandlerServlet extends HttpServlet {
@@ -24,9 +29,9 @@ public class FormHandlerServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Information requested in the form
-    String name = request.getParameter("name-input");
-    String contactMethod = request.getParameter("contact-method");
-    String contactInformation = request.getParameter("contact-information");
+    String name = Jsoup.clean(request.getParameter("name-input"), Safelist.none());
+    String contactMethod = Jsoup.clean(request.getParameter("contact-method"), Safelist.none());
+    String contactInformation = Jsoup.clean(request.getParameter("contact-information"), Safelist.none());
 
     // Print the value so you can see it in the server logs.
     System.out.println("Name: " + name);
