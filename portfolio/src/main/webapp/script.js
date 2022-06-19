@@ -43,10 +43,6 @@ async function showContacts() {
     const responseFromServer = await fetch('/form-handler');
     const textFromResponse = await responseFromServer.json();
 
-    String = Jsoup.clean(request.getParameter("title"), Whitelist.none());
-    //Pick a random message
-    const msg = textFromResponse[Math.floor(Math.random() * textFromResponse.length)];
-  
-    const helloContainer = document.getElementById('contacts-container');
-    helloContainer.innerText = msg;
+    const contactsContainer = document.getElementById('contacts-container');
+    contactsContainer.innerText = textFromResponse;
 }
