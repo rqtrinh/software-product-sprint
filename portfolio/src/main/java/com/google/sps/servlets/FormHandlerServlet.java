@@ -21,8 +21,6 @@ import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 
-
-
 @WebServlet("/form-handler")
 public class FormHandlerServlet extends HttpServlet {
 
@@ -55,9 +53,11 @@ public class FormHandlerServlet extends HttpServlet {
         .build();
     datastore.put(contactEntity);
 
+    //Format string for getWriter 
+    String submit = String.format("You submitted: %s, %s, %s", name, contactMethod, contactInformation);
+
     // Write the value to the response so the user can see it.
-    response.getWriter().println("You submitted: " + name + ", " + 
-                                contactMethod + ", " + contactInformation);
+    response.getWriter().println(submit);
     // Redirect user back to main page
     response.sendRedirect("https://rtrinh-sps-summer22.appspot.com/");
   }
