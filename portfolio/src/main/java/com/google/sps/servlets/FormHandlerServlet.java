@@ -18,15 +18,25 @@ import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
 
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Safelist;
+
 @WebServlet("/form-handler")
 public class FormHandlerServlet extends HttpServlet {
 
+  //Constants for interacting with datastore operations
+  public static final String CONTACT = "contact";
+  public static final String NAME = "name";
+  public static final String CONTACT_METHOD = "contactMethod";
+  public static final String CONTACT_INFO = "contactInformation";
+
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
     // Information requested in the form
-    String name = request.getParameter("name-input");
-    String contactMethod = request.getParameter("contact-method");
-    String contactInformation = request.getParameter("contact-information");
+    String name = Jsoup.clean(request.getParameter("name-input"), Safelist.none());
+    String contactMethod = Jsoup.clean(request.getParameter("contact-method"), Safelist.none());
+    String contactInformation = Jsoup.clean(request.getParameter("contact-information"), Safelist.none());
 
     // Print the value so you can see it in the server logs.
     System.out.println("Name: " + name);
@@ -34,12 +44,12 @@ public class FormHandlerServlet extends HttpServlet {
     System.out.println("Contact Information: " + contactInformation);
  
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Contact");
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind(CONTACT);
     FullEntity contactEntity =
     Entity.newBuilder(keyFactory.newKey())
-        .set("name", name)
-        .set("contactMethod", contactMethod)
-        .set("contactInformation", contactInformation)
+        .set(NAME, name)
+        .set(CONTACT_METHOD, contactMethod)
+        .set(CONTACT_INFO, contactInformation)
         .build();
     datastore.put(contactEntity);
 

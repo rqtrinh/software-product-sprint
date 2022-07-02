@@ -38,3 +38,11 @@ async function showHello() {
     const helloContainer = document.getElementById('hello-container');
     helloContainer.innerText = msg;
 }
+
+async function showContacts() {
+    const responseFromServer = await fetch('/form-handler');
+    const textFromResponse = await responseFromServer.json();
+
+    const contactsContainer = document.getElementById('contacts-container');
+    contactsContainer.innerText = textFromResponse;
+}

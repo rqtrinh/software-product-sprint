@@ -26,6 +26,14 @@
       <artifactId>google-cloud-datastore</artifactId>
       <version>1.104.0</version>
     </dependency>
+
+    <!-- jsoup -->
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.14.2</version>
+    </dependency>
+    
     <!-- GSON -->
     <dependency>
       <groupId>com.google.code.gson</groupId>
